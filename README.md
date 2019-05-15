@@ -17,3 +17,6 @@ Step 2:
 
 Step 3:
 - Move all method definitions from inside the constructor to the constructors prototype.
+
+Step 4:
+- Use prototypal inheritance (Person -> Teacher)

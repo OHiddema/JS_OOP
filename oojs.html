@@ -42,34 +42,47 @@
       ' years old. ' + genderText + ' likes ' + intString + '.');
   };
 
-
-
   Person.prototype.greeting = function () {
     console.log('Hi! I\'m ' + this.name.first + '.');
   };
 
-
-  // Add a new method to the Person prototype / constructor function
-  // It is fairly common to define the properties inside the constructor,
-  // and the methods on the prototype.
   Person.prototype.farewell = function () {
     console.log(this.name.first + ' has left the building. Bye for now!');
   };
 
-  var person1 = new Person('Kees', 'de Jager', 30, 'male', ['fitness']);
-  var person2 = new Person('Jaap', 'Jansen', 35, 'male', ['fitness', 'javascript']);
-  var person3 = new Person('Oege', 'Hiddema', 40, 'male', ['fitness', 'javascript', 'cycling']);
-  var person4 = new Person('Cindy', 'Lauper', 49, 'female', ['music', 'dancing', 'make fun', 'make more fun']);
+  // Step 4
+  // Teacher inherits (first, last, age, gender, interests) from Person
+  // and has an additional property: subject
+  function Teacher(first, last, age, gender, interests, subject) {
+    Person.call(this, first, last, age, gender, interests);
 
+    this.subject = subject;
+  }
 
-  // Test all possible output variants...
-  person1.bio();
-  person2.bio();
-  person3.bio();
-  person4.bio();
+  // Needed to inherit the method's of Person:
+  Teacher.prototype = Object.create(Person.prototype);
 
-  // This works, even if the new method is defined AFTER person1 has been created!
-  person1.farewell();
+  // Set the teacher's prototype contructor form Person to Teacher
+  Object.defineProperty(Teacher.prototype, 'constructor', {
+    value: Teacher,
+    enumerable: false,
+    writable: true
+  });
+
+  // Give Teacher a different greeting function
+  Teacher.prototype.greeting = function () {
+    let genderText = (this.gender === 'male') ? "Mr." : "Mrs.";
+    console.log('Hello. My name is ' + genderText + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+  };
+
+  // Test output of the new Teacher object definition
+  var teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+  console.log(teacher1.name.first);
+  console.log(teacher1.interests[0]);
+  console.log(teacher1.subject);
+  teacher1.bio();
+  teacher1.greeting();
+  teacher1.farewell();
 
 </script>
 
