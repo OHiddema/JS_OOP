@@ -20,3 +20,6 @@ Step 3:
 
 Step 4:
 - Use prototypal inheritance (Person -> Teacher)
+
+Step 5:
+- Rewriting the model from prototypal inheritance to classes (ECMAScript 2015)
