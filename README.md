@@ -1,2 +1,10 @@
 # JS_OOP
 Strarting Javascript OOP from scratch, to create a more solid foundation
+
+Beginning at:
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects
+
+Step 1:
+- Create an object constructor.
+- Create two instances.
+- Output property and method of each object to the console.
