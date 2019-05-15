@@ -14,21 +14,48 @@
 </body>
 
 <script>
-  function Person(name) {
-    this.name = name;
+  function Person(first, last, age, gender, interests) {
+    this.name = {
+      first: first,
+      last: last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+    this.bio = function () {
+      // Change output, depending on gender
+      let genderText = (this.gender === 'male') ? "He" : "She";
+
+      // Handling interests array of any length correctly
+      let intString = interests[0];
+
+      if (interests.length > 1) {
+        for (let i = 1; i < this.interests.length - 1; i++) {
+          intString += ', ' + this.interests[i];
+        }
+        intString += ' and ' + this.interests[this.interests.length - 1];
+      }
+
+      console.log(this.name.first + ' ' + this.name.last + ' is ' + this.age +
+        ' years old. ' + genderText + ' likes ' + intString + '.');
+    };
     this.greeting = function () {
-      console.log('Hi! I\'m ' + this.name + '.');
+      console.log('Hi! I\'m ' + this.name.first + '.');
     };
   }
 
-  var person1 = new Person('Oege');
-  var person2 = new Person('Jacco');
+  var person1 = new Person('Kees', 'de Jager', 30, 'male', ['fitness']);
+  var person2 = new Person('Jaap', 'Jansen', 35, 'male', ['fitness', 'javascript']);
+  var person3 = new Person('Oege', 'Hiddema', 40, 'male', ['fitness', 'javascript', 'cycling']);
+  var person4 = new Person('Cindy', 'Lauper', 49, 'female', ['music', 'dancing', 'make fun', 'make more fun']);
 
-  console.log(person1.name);
-  person1.greeting();
 
-  console.log(person2.name);
-  person2.greeting();
+  // Test all possible output variants...
+  person1.bio();
+  person2.bio();
+  person3.bio();
+  person4.bio();
+
 </script>
 
 </html>
