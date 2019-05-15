@@ -44,6 +44,13 @@
     };
   }
 
+  // Add a new method to the Person prototype / constructor function
+  // It is fairly common to define the properties inside the constructor,
+  // and the methods on the prototype.
+  Person.prototype.farewell = function () {
+    console.log(this.name.first + ' has left the building. Bye for now!');
+  };
+
   var person1 = new Person('Kees', 'de Jager', 30, 'male', ['fitness']);
   var person2 = new Person('Jaap', 'Jansen', 35, 'male', ['fitness', 'javascript']);
   var person3 = new Person('Oege', 'Hiddema', 40, 'male', ['fitness', 'javascript', 'cycling']);
@@ -55,6 +62,9 @@
   person2.bio();
   person3.bio();
   person4.bio();
+
+  // This works, even if the new method is defined AFTER person1 has been created!
+  person1.farewell();
 
 </script>
 

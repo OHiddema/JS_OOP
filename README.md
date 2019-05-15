@@ -14,3 +14,6 @@ Step 2:
 - Do additional exercises.
   - Change output, depending on gender.
   - Handling interests array of any length correctly.
+
+Step 3:
+- Modifying the prototype (add a method with object.prototype).
