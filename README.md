@@ -16,4 +16,4 @@ Step 2:
   - Handling interests array of any length correctly.
 
 Step 3:
-- Modifying the prototype (add a method with object.prototype).
+- Move all method definitions from inside the constructor to the constructors prototype.

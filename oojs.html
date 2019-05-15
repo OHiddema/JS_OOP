@@ -22,27 +22,32 @@
     this.age = age;
     this.gender = gender;
     this.interests = interests;
-    this.bio = function () {
-      // Change output, depending on gender
-      let genderText = (this.gender === 'male') ? "He" : "She";
-
-      // Handling interests array of any length correctly
-      let intString = this.interests[0];
-
-      if (interests.length > 1) {
-        for (let i = 1; i < this.interests.length - 1; i++) {
-          intString += ', ' + this.interests[i];
-        }
-        intString += ' and ' + this.interests[this.interests.length - 1];
-      }
-
-      console.log(this.name.first + ' ' + this.name.last + ' is ' + this.age +
-        ' years old. ' + genderText + ' likes ' + intString + '.');
-    };
-    this.greeting = function () {
-      console.log('Hi! I\'m ' + this.name.first + '.');
-    };
   }
+
+  Person.prototype.bio = function () {
+    // Change output, depending on gender
+    let genderText = (this.gender === 'male') ? "He" : "She";
+
+    // Handling interests array of any length correctly
+    let intString = this.interests[0];
+
+    if (this.interests.length > 1) {
+      for (let i = 1; i < this.interests.length - 1; i++) {
+        intString += ', ' + this.interests[i];
+      }
+      intString += ' and ' + this.interests[this.interests.length - 1];
+    }
+
+    console.log(this.name.first + ' ' + this.name.last + ' is ' + this.age +
+      ' years old. ' + genderText + ' likes ' + intString + '.');
+  };
+
+
+
+  Person.prototype.greeting = function () {
+    console.log('Hi! I\'m ' + this.name.first + '.');
+  };
+
 
   // Add a new method to the Person prototype / constructor function
   // It is fairly common to define the properties inside the constructor,
