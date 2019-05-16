@@ -61,27 +61,37 @@
       super(first, last, age, gender, interests);
 
       // subject and grade are specific to Teacher
-      this.subject = subject;
+
+      // Changed property name from 'subject' to '_subject';
+      // Beacause property cannot have the same name as the methods !?
+      this._subject = subject;
       this.grade = grade;
     }
 
     greeting() {
         let genderText = (this.gender === 'male') ? "Mr." : "Mrs.";
-        // console.log('Hello. My name is ' + genderText + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
         console.log(`Hello. My name is ${genderText} ${this.name.last}, and I teach ${this.subject}.`);
       };
+
+      // Use a getter an a setter.
+      get subject() {
+        return this._subject;
+      }
+      set subject(newSubject) {
+        this._subject = newSubject;
+      }
   }
 
 
   // Test output of the new Teacher object definition
   var teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
-  console.log(teacher1.name.first);
-  console.log(teacher1.interests[0]);
-  console.log(teacher1.subject);
-  teacher1.bio();
-  teacher1.greeting();
-  teacher1.farewell();
 
+  // Use getter to output current value
+  console.log(`Current subject of teacher1: ${teacher1.subject}`);
+  // Use setter to set new value
+  teacher1.subject = 'advanced mathematics'
+  // Use getter to output new value
+  console.log(`New subject of teacher1: ${teacher1.subject}`);
 </script>
 
 </html>

@@ -23,3 +23,6 @@ Step 4:
 
 Step 5:
 - Rewriting the model from prototypal inheritance to classes (ECMAScript 2015)
+
+Step 6:
+- Using getters and setters.
